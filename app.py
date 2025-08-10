@@ -71,15 +71,27 @@ banana_sensor_model = SensorNet().to(device)
 # model.eval()  # Set the model to evaluation mode
 
 # Load weights (adjust paths if needed)
+
 import torch
 
+# Load checkpoint (PyTorch 2.6+ requires weights_only=False for full checkpoints)
 try:
-    cnn_checkpoint = torch.load('best_banana_model.pth', map_location='cpu')
+    cnn_checkpoint = torch.load(
+        'best_banana_model.pth',
+        map_location='cpu',
+        weights_only=False  # <-- this is the important part
+    )
 except TypeError:
-    # For PyTorch 2.6+ where weights_only must be set
-    cnn_checkpoint = torch.load('best_banana_model.pth', map_location='cpu', weights_only=False)
+    # For older PyTorch versions that don't have weights_only arg
+    cnn_checkpoint = torch.load('best_banana_model.pth', map_location='cpu')
+
+# Load into model
 banana_cnn_model.load_state_dict(cnn_checkpoint['model_state_dict'])
 banana_cnn_model.eval()
+
+
+
+
 
 sensor_state_dict = torch.load('banana_900_sensor_model.pth', map_location=device)
 banana_sensor_model.load_state_dict(sensor_state_dict)

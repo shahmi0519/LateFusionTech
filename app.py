@@ -84,7 +84,7 @@ banana_sensor_model = SensorNet().to(device)
 # model.eval()  # Set the model to evaluation mode
 
 # Load weights (adjust paths if needed)
-cnn_checkpoint = torch.load('best_banana_model.pth', map_location='cpu)
+cnn_checkpoint = torch.load('best_banana_model.pth', map_location='cpu')
 banana_cnn_model.load_state_dict(cnn_checkpoint['model_state_dict'])
 banana_cnn_model.eval()
 

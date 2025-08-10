@@ -8,10 +8,6 @@ import joblib
 from efficientnet_pytorch import EfficientNet
 import torch.nn as nn
 
-import gdown
-
-
-
 # --- Device ---
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 

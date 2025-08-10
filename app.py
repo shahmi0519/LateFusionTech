@@ -10,15 +10,6 @@ import torch.nn as nn
 
 import gdown
 
-# Google Drive file ID
-file_id = '1_3vs185REpKysMIkQFI7H2dVi7QOhC5X'
-url = f'https://drive.google.com/uc?export=download&id=1_3vs185REpKysMIkQFI7H2dVi7QOhC5X'
-
-# Output file path
-output = 'best_banana_model.pth'
-
-# Download the file
-gdown.download(url, output, quiet=False)
 
 
 # --- Device ---
